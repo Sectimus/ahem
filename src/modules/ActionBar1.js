@@ -1,5 +1,8 @@
-import { Checkbox, Dropdown, Slider } from '../components/Form'
 import useState from '../js/reactextentions.js';
+import { Checkbox, Dropdown, Slider } from '../components/Form'
+import AdvancedFrameSettings from '../components/AdvancedFrameSettings';
+import { memo } from 'react'
+import isEqual from 'lodash.isequal';
 
 const ActionBar1 = ({model, onChange}) => {
     const [_model, _setModel] = useState(model);
@@ -16,7 +19,7 @@ const ActionBar1 = ({model, onChange}) => {
                 value={_model.settings['0']}
                 onChange={(v)=>{
                     _model.settings['0'] = v
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Slider
@@ -28,7 +31,7 @@ const ActionBar1 = ({model, onChange}) => {
                 value={_model.settings['1']}
                 onChange={(v)=>{
                     _model.settings['1'] = v
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Slider
@@ -40,7 +43,7 @@ const ActionBar1 = ({model, onChange}) => {
                 value={_model.settings['2']}
                 onChange={(v)=>{
                     _model.settings['2'] = v
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Slider
@@ -52,7 +55,7 @@ const ActionBar1 = ({model, onChange}) => {
                 value={_model.settings['3']}
                 onChange={(v)=>{
                     _model.settings['3'] = v
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Slider
@@ -64,7 +67,7 @@ const ActionBar1 = ({model, onChange}) => {
                 value={_model.settings['4']}
                 onChange={(v)=>{
                     _model.settings['4'] = v
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Checkbox
@@ -75,7 +78,7 @@ const ActionBar1 = ({model, onChange}) => {
                 }
                 onChange={(v)=>{
                     _model.settings['6'] = v ? '1' : '0'
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
             />
             <Checkbox
@@ -86,11 +89,19 @@ const ActionBar1 = ({model, onChange}) => {
                 }
                 onChange={(v)=>{
                     _model.settings['8'] = v ? '1' : '0'
-                    _setModel({..._model}, (model)=>onChange(model));
+                    _setModel({..._model}, (_model)=>onChange(_model));
                 }}
-            />    
+            />   
+            <AdvancedFrameSettings
+            model={
+                _model
+            }
+            onChange={(v)=>{
+                _setModel({...v}, (_model)=>onChange(_model));
+            }}
+            />
         </>
     )
 }
 
-export default ActionBar1
+export default memo(ActionBar1, (a, b)=>isEqual(a.model, b.model));

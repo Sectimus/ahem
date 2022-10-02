@@ -10,7 +10,7 @@ function App() {
       <div className="row d-flex justify-content-center">
         <div className="col-md-6">
           <form className="card px-5 py-5">
-          <p className="lead text-center">{model.sections[0].frame}</p>
+          <p className="lead text-center text-primary">{model.sections[0].frame}</p>
           <ActionBar1
             model={model.sections[0]}
             onChange={(actionBar1Model)=>{
