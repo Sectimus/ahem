@@ -86,4 +86,28 @@ const Slider = ({label, description, onChange, value, options}) => {
     )
 }
 
-export {Checkbox, Dropdown, Slider};
+const Text = ({label, description, onChange, value}) => {
+    const [_value, _setValue] = useState(value);
+    const id = useId();
+
+    return(
+        <>
+            <input
+            type="text"
+            className="form-text"
+            id={id}
+            value={_value}
+            onChange={e=>_setValue(e.target.value, (_value)=>onChange(_value))}/>
+            <div>
+                <label
+                htmlFor={id}
+                className="form-text-label">
+                    {label}
+                </label>
+                <p className="text-muted"><small>{description}</small></p>
+            </div>
+        </>
+    )
+}
+
+export {Checkbox, Dropdown, Slider, Text};
