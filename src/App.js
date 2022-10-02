@@ -1,6 +1,6 @@
 import './App.scss';
 import Ahemapi from './js/ahemlib'
-import { Checkbox, Dropdown } from './components/Form'
+import { Checkbox, Dropdown, Slider } from './components/Form'
 import {useState} from 'react'
 
 function App() {
@@ -11,6 +11,17 @@ function App() {
         <div className="col-md-6">
           <form className="card px-5 py-5">
           <p className="lead text-center">{model.sections[0].frame}</p>
+          <Slider
+            label="# of Rows"
+            description="The number of rows to be displayed"
+            options={
+              {min: '1', max: '4'}
+            }
+            value={model.sections[0].settings['0']}
+            onChange={(v)=>{
+              model.sections[0].settings['0'] = v
+              setModel({...model});
+            }}/>
           <Dropdown
             label="Orientation"
             description="Sets the orientation of the first action bar"
@@ -39,18 +50,6 @@ function App() {
               model.sections[0].settings['8'] = v ? '1' : '0'
               setModel({...model});
             }}/>
-          <input
-            type="text"
-            name="somename"
-            data-provide="slider"
-            data-slider-ticks="[1, 2, 3]"
-            data-slider-ticks-labels='["short", "medium", "long"]'
-            data-slider-min="1"
-            data-slider-max="3"
-            data-slider-step="1"
-            data-slider-value="3"
-            data-slider-tooltip="hide"
-          />
           </form>
         </div>
       </div>
