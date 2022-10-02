@@ -44,8 +44,21 @@ const AdvancedFrameSettings = ({model, onChange}) => {
                         )
                     })}
                 </select>
-                <span> of </span>
-                {_model.parent}
+                <span> of the </span>
+                <select
+                    className="badge fw-normal bg-gray text-dark border-0" style={{width: "auto"}}
+                    onChange={e=>{
+                        _model.parent = e.target.value
+                        _setModel({..._model}, (_model)=>onChange(_model))
+                    }}
+                    value={_model.parent}
+                >
+                    {Object.keys(Ahemapi.FRAMES).map(frame => {
+                        return(
+                            <option key={frame} value={frame}>{Ahemapi.FRAMES[frame]}</option>
+                        )
+                    })}
+                </select>
                 <span> offset by </span>
                 <span className="input-group w-auto d-inline-flex">
                     <span className="input-group-text py-0 lh-1 ">x</span>

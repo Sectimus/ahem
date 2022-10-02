@@ -11,7 +11,7 @@ const CRYPTMAP = {
   'W': '45','X': '46','Y': '47','Z': '48',
 }
 
-const FRAMES = {
+const FRAMEGROUPS = {
   '0': {
     '0':"Action Bar 1",
     '1':"Action Bar 2",
@@ -64,15 +64,20 @@ const FRAMES = {
   }
 }
 
+const FRAMES = {
+  "UIParent": "screen",
+  "PlayerFrame": "player portrait",
+}
+
 const ANCHORS = {
   "TOPLEFT": "top left",
-  "TOPCENTER": "top center",
+  "TOPCENTER": "top",
   "TOPRIGHT": "top right",
   "LEFT":"left",
   "CENTER":"center",
   "RIGHT":"right",
   "BOTTOMLEFT":"bottom left",
-  "BOTTOMCENTER":"bottom center",
+  "BOTTOMCENTER":"bottom",
   "BOTTOMRIGHT":"bottom right"
 }
 
@@ -115,7 +120,7 @@ const fromString = (input)=>{
 
     let framegroup = sectionArr[0];
     let frameid = sectionArr[1];
-    let frame = FRAMES[framegroup.toString()][frameid.toString()]
+    let frame = FRAMEGROUPS[framegroup.toString()][frameid.toString()]
     let point = POINTS[sectionArr[2].toString()];
     let relativepoint = POINTS[sectionArr[3].toString()];
     let parent = sectionArr[4];
@@ -174,4 +179,4 @@ const toString = (model)=>{
   });
   return output;
 }
-export default {fromString, toString, ANCHORS}
+export default {fromString, toString, ANCHORS, FRAMES}
