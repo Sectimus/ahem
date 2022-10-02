@@ -61,7 +61,7 @@ const AdvancedFrameSettings = ({model, onChange}) => {
                 </select>
                 <span> offset by </span>
                 <span className="input-group w-auto d-inline-flex">
-                    <span className="input-group-text py-0 lh-1 ">x</span>
+                    <span className="input-group-text py-0 px-1 lh-1 ">x</span>
                     <input 
                         type="number" 
                         className='form-control py-0 lh-1'
@@ -79,7 +79,7 @@ const AdvancedFrameSettings = ({model, onChange}) => {
                 </span>
                 <span> and </span>
                 <span className="input-group w-auto d-inline-flex">
-                    <span className="input-group-text py-0 lh-1">y</span>
+                    <span className="input-group-text py-0 px-1 lh-1">y</span>
                     <input 
                         type="number" 
                         className='form-control py-0 lh-1'
