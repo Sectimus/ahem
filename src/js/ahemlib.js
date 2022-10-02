@@ -64,7 +64,20 @@ const FRAMES = {
   }
 }
 
-const POINTS = {
+const ANCHORS = {
+  "TOPLEFT": "top left",
+  "TOPCENTER": "top center",
+  "TOPRIGHT": "top right",
+  "LEFT":"left",
+  "CENTER":"center",
+  "RIGHT":"right",
+  "BOTTOMLEFT":"bottom left",
+  "BOTTOMCENTER":"bottom center",
+  "BOTTOMRIGHT":"bottom right"
+}
+
+const POINTS = 
+{
 	'0':"TOPLEFT",
 	'1':"TOPCENTER",
 	'2':"TOPRIGHT",
@@ -75,6 +88,9 @@ const POINTS = {
 	'7':"BOTTOMCENTER",
 	'8':"BOTTOMRIGHT",
 }
+
+
+
 
 function swap(json){
   var ret = {};
@@ -158,4 +174,4 @@ const toString = (model)=>{
   });
   return output;
 }
-export default {fromString, toString}
+export default {fromString, toString, ANCHORS}
